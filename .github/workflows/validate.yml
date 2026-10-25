@@ -1,0 +1,16 @@
+name: validate skill
+on: [push, pull_request]
+jobs:
+  frontmatter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check SKILL.md frontmatter
+        run: |
+          f=design-skill/SKILL.md
+          test -f "$f" || { echo "missing $f"; exit 1; }
+          head -1 "$f" | grep -qx -- '---' || { echo "SKILL.md must start with YAML frontmatter"; exit 1; }
+          grep -qE '^name:' "$f" || { echo "frontmatter missing name"; exit 1; }
+          grep -qE '^description:' "$f" || { echo "frontmatter missing description"; exit 1; }
+          lines=$(wc -l < "$f"); [ "$lines" -le 500 ] || echo "::warning::SKILL.md is $lines lines; consider moving detail to references/"
+          echo "ok"
