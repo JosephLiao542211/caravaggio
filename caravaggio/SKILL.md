@@ -1,5 +1,5 @@
 ---
-name: design-skill
+name: caravaggio
 description: >-
   TODO: One or two sentences on what this skill does, then when to use it.
   Be a little pushy so Claude does not under-trigger. Example: "Guidance for
@@ -9,7 +9,7 @@ description: >-
   they never say the word 'design'."
 ---
 
-# Design Skill
+# Caravaggio
 
 <!--
   TEMPLATE NOTES (delete when done)

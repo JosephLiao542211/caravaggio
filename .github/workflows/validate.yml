@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check SKILL.md frontmatter
         run: |
-          f=design-skill/SKILL.md
+          f=caravaggio/SKILL.md
           test -f "$f" || { echo "missing $f"; exit 1; }
           head -1 "$f" | grep -qx -- '---' || { echo "SKILL.md must start with YAML frontmatter"; exit 1; }
           grep -qE '^name:' "$f" || { echo "frontmatter missing name"; exit 1; }
